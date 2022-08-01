@@ -1,0 +1,45 @@
+:root {
+    --back: #000000;
+    --red: #FF0000;
+    --green: #01DF01;
+    --blue: #0101DF;
+    --white: #FFFFFF;
+}
+
+.titulo-listagem {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 22pt;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.btn-edit{
+    padding: 10px;
+    border-radius: 2px;
+    color: var(--white);
+    text-decoration: none;
+    background-color: var(--green);
+}
+.btn-delete{
+    padding: 10px;
+    border-radius: 2px;
+    color: var(--white);
+    text-decoration: none;
+    background-color: var(--red);
+}
