@@ -17,7 +17,7 @@
     $result_edit_user->execute();
 
     if(($result_edit_user) AND ($result_edit_user->rowCount() != 0)){
-        $row_user = $result_edit_user->fetch(PDO::FETCH_ASSOC);
+        $row_user = $result_edit_user->fetch(PDO::FETCH_ASSOC); // LE O RESULTADO
     }else{
         $_SESSION['msg'] = "<p style='color: #FF0000;'>Erro; Usuário não encontrado</p>";
         header("Location: index.php");
@@ -66,7 +66,7 @@
                 $edit_user->bindParam(':senha', $_POST['senha']);
 
                 if($edit_user->execute()){
-                    $_SESSION['msg'] =  "<p style='color: #01DF01;'>Usuario editado com sucesso!</p>";
+                    $_SESSION['msg'] = "<p style='color: #01DF01;'>Usuario editado com sucesso!</p>";
                     header("Location: ../List/Listar.php");
                 }else{
                     $_SESSION['msg'] = "<p style='color: #FF0000;'>Erro; Usuario não editado com sucesso!</p>";
@@ -76,7 +76,7 @@
         }
     ?>
     <form id="edit-usuario" class="form-login" method="POST" action="">
-    <div class="div-name">
+        <div class="div-name">
             <label class="label">Nome:</label>
             <input class="input" type="text" name="nome" id="nome" value="<?=$row_user['nome'] ?>" placeholder="Nome Completo" required/>
         </div>

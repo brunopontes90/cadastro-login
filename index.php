@@ -1,6 +1,5 @@
 <?php
     session_start();
-    ob_start(); //LIMPAR O BUFFER DE SAIDA
     include_once './src/Conection/Conection.php';
 ?>
 
@@ -13,49 +12,32 @@
 </head>
 <body>
     <a href="./src/pages/List/listar.php">Listagem</a>
-    <h1 class="titulo-cadastro" >Cadastrar</h1>
+    <h1 class="titulo-cadastro" >Login</h1>
     <?php
-        // RECEBE OS DADOS DO FORMULARIO
-        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        if(isset($_POST['entrar'])){
+            header("Location: ./src/pages/List/listar.php");
 
-        // VERIFICA SE O USUARIO CLICOU NO BOTÃO
-       if(!empty($dados['CadUser'])){
-            $empty_input = false;
-            $dados = array_map('trim', $dados);
+        }elseif(isset($_POST['entrar'])){
+            $query = $conn->prepare("SELECT id, nome FROM user WHERE email = :email AND senha = :senha");
+            $query->bindParam(':email', $_POST['login']);
+            $query->bindParam(':senha', $_POST['senha']);
+            $query->execute();
 
-            if(in_array("", $dados)){
-                $empty_input = true;
-                echo "<p style='color: red ;'>ERRO: Necessario preencher todos os campos!</p>";
+            $result = $query->fetchAll(PDO::FETCH_CLASS);
 
-            // VERIFICA SE É UM EMAIL
-            }elseif(!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)){
-                $empty_input = true;
-                echo "<p style='color: red ;'>ERRO: Preencher com email válido!</p>";
+            if(count($result) == 1){
+                session_start();
+                $_SESSION['login'] = $result[0]->nome;
+                $_SESSION['id'] = $result[0]->id;
+
+                header("Location: ./src/pages/List/listar.php");
+            }else{
+                echo "<p style='color: red ;'>ERRO: Credenciais invalidas, tente novamente</p>";
+                header("Location: index.php");
             }
-
-            // VERIFICA SE TEM DADOS NO INPUT, SE TIVER, ENVIA OS DADOS
-            if(!$empty_input){
-                $query_user = $conn->prepare("INSERT INTO user (nome, email, senha) VALUES (:nome, :email, :senha)");
-                $query_user->bindParam(':nome', $_POST['nome']);
-                $query_user->bindParam(':email', $_POST['email']);
-                $query_user->bindParam(':senha', $_POST['senha']);
-                $query_user->execute();
-
-                if($query_user->rowCount()){
-                    unset($dados);
-                    $_SESSION['msg'] = "<p style='color: green ;'>Usuario cadastrado com sucesso!</p>";
-                    header("Location: src/pages/List/listar.php");
-                }else{
-                    echo "<p style='color: red ;'>ERRO: tente novamente</p>";
-                }
-            }
-        }
+        }else{}
     ?>
     <form name='cad-user' method='POST' action='' class="form-login">
-        <div class="div-name">
-            <label class="label">Nome:</label>
-            <input class="input" type="text" name="nome" id="nome" placeholder="Nome Completo" required/>
-        </div>
         <div class="div-email">
             <label class="label">Email:</label>
             <input class="input" type="email" name="email" id="email" placeholder="Digite seu email" required/>
@@ -65,7 +47,8 @@
             <input class="input" type="pass" name="senha" id="senha" placeholder="Digite sua senha" required/>
         </div>
 
-        <input class="btn-cadastrar" type="submit" value="Cadastrar" name="CadUser" />
+        <input class="btn-cadastrar" type="submit" value="Entrar" name="entrar" />
+        <a href="./src/Pages/Create/Cadastro.php" class="btn-teste">Não possuo cadastro</a>
     </form>
 </body>
 </html>

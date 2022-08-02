@@ -45,11 +45,25 @@
     margin-top: 16px;
 }
 
-.input{
+.input {
     height: 24px;
 }
 
-.btn-cadastrar{
+.btn-cadastrar {
+    width: 150px;
+    height: 42px;
+    border: none;
+    font-size: 14pt;
+    cursor: pointer;
+    margin-top: 24px;
+    margin-left: 48px;
+    color: var(--white);
+    border-radius: 20px;
+    text-transform: uppercase;
+    background-color: var(--blue);
+}
+
+.btn-teste{
     width: 150px;
     height: 42px;
     border: none;
