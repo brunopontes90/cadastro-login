@@ -33,7 +33,7 @@
     <title>Editar</title>
 </head>
 <body>
-    <h1 class="titulo-editar">Editar</h1>
+    <h1 class="titulo-editar">Editar Usuario</h1>
     <?php
         // RECEBER OS DADOS DO FORMULARIO
         $dados =  filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -43,9 +43,11 @@
             $empty_input = false;
             $dados = array_map('trim', $dados);
 
+            // verifica se tem campoo vazio 
             if(in_array("", $dados)){
                 $$empty_input = true;
                 echo "<p style='color: #FF0000;'>Erro; Necessario preencher todos os campos!</p>";
+
             }elseif(!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)){
                 $empty_input = true;
                 echo "<p style='color: red ;'>ERRO: Preencher com email válido!</p>";
@@ -58,12 +60,12 @@
             }
 
             if(!$empty_input){
-                $query_update = "UPDATE user SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
+                $query_update = "UPDATE user SET nome=:nome, email=:email, senha=:senha WHERE id=:id";
                 $edit_user = $conn->prepare($query_update);
-                $edit_user->bindParam(':id', $_POST['id']);
                 $edit_user->bindParam(':nome', $_POST['nome']);
                 $edit_user->bindParam(':email', $_POST['email']);
                 $edit_user->bindParam(':senha', $_POST['senha']);
+                $edit_user->bindParam(':id', $id);
 
                 if($edit_user->execute()){
                     $_SESSION['msg'] = "<p style='color: #01DF01;'>Usuario editado com sucesso!</p>";
@@ -78,7 +80,7 @@
     <form id="edit-usuario" class="form-login" method="POST" action="">
         <div class="div-name">
             <label class="label">Nome:</label>
-            <input class="input" type="text" name="nome" id="nome" value="<?=$row_user['nome'] ?>" placeholder="Nome Completo" required/>
+            <input class="input" type="text" name="nome" id="nome" value="<?=$row_user['nome']?>" placeholder="Nome Completo" required/>
         </div>
         <div class="div-email">
             <label class="label">Email:</label>

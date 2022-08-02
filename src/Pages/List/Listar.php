@@ -15,7 +15,7 @@
 </head>
 <body>
     <a href="../../../index.php">Cadastrar</a>
-    <h1 class="titulo-listagem">Listagem</h1>
+    <h1 class="titulo-listagem">Lista de Usuarios</h1>
     <?php 
         if(isset($_SESSION['msg'])){
             echo $_SESSION['msg'];
