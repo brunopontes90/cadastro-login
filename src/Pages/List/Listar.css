@@ -31,15 +31,19 @@ tr:nth-child(even) {
 
 .btn-edit{
     padding: 10px;
+    font-size: 10pt;
     border-radius: 2px;
     color: var(--white);
     text-decoration: none;
+    text-transform: uppercase;
     background-color: var(--green);
 }
 .btn-delete{
     padding: 10px;
+    font-size: 10pt;
     border-radius: 2px;
     color: var(--white);
     text-decoration: none;
+    text-transform: uppercase;
     background-color: var(--red);
 }

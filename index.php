@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    ob_start(); //LIMPAR O BUFFER DE SAIDA
     include_once './src/Conection/Conection.php';
 ?>
 
@@ -21,7 +23,6 @@
             $empty_input = false;
             $dados = array_map('trim', $dados);
 
-            // 
             if(in_array("", $dados)){
                 $empty_input = true;
                 echo "<p style='color: red ;'>ERRO: Necessario preencher todos os campos!</p>";
@@ -41,9 +42,11 @@
                 $query_user->execute();
 
                 if($query_user->rowCount()){
-                    echo "<p class='aviso-sucesso'>Usuario cadastrado com sucesso!</p>";
+                    unset($dados);
+                    $_SESSION['msg'] = "<p style='color: green ;'>Usuario cadastrado com sucesso!</p>";
+                    header("Location: src/pages/List/listar.php");
                 }else{
-                    echo "<p class='aviso-erro'>ERRO: tente novamente</p>";
+                    echo "<p style='color: red ;'>ERRO: tente novamente</p>";
                 }
             }
         }

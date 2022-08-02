@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once '../../Conection/Conection.php';
     $result = array();
     $sql = "SELECT * FROM user";
@@ -15,6 +16,12 @@
 <body>
     <a href="../../../index.php">Cadastrar</a>
     <h1 class="titulo-listagem">Listagem</h1>
+    <?php 
+        if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+    ?>
     <table class="table-list">
         <tbody table=1>
             <td>
@@ -35,7 +42,7 @@
                     <td><?=$row['nome']?></td>
                     <td><?=$row['email']?></td>
                     <td>
-                        <a href="/#/#?id=<?=$row['id']?>" class="btn-edit fas fa-edit">Editar</a>
+                        <a href="../Edit/Editar.php?id=<?=$row['id']?>" class="btn-edit fas fa-edit">Editar</a>
                         <a href="/#/#?id=<?=$row['id']?>" class="btn-delete fas fa-trash-alt">Excluir</a>
                     </td>
                 </tr>
