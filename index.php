@@ -48,7 +48,7 @@
         </div>
 
         <input class="btn-cadastrar" type="submit" value="Entrar" name="entrar" />
-        <a href="./src/Pages/Create/Cadastro.php" class="btn-teste">Não possuo cadastro</a>
+        <a href="./src/Pages/Create/Cadastro.php">Não possuo cadastro</a>
     </form>
 </body>
 </html>
