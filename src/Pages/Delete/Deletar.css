@@ -1,0 +1,66 @@
+:root {
+    --back: #000000;
+    --red: #FF0000;
+    --green: #01DF01;
+    --blue: #0101DF;
+    --white: #FFFFFF;
+}
+
+.titulo-editar {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 22pt;
+}
+
+.form-login {
+    text-align: center;
+}
+
+.div-name {
+    margin-top: 24px;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 12pt;
+}
+
+.div-email {
+    margin-top: 16px;
+}
+
+.div-senha {
+    margin-top: 16px;
+}
+
+.input {
+    height: 24px;
+}
+
+.btn-cancelar {
+    border: none;
+    font-size: 14pt;
+    cursor: pointer;
+    margin-top: 24px;
+    margin-left: 48px;
+    color: var(--white);
+    border-radius: 20px;
+    text-transform: uppercase;
+    background-color: var(--red);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.btn-salvar {
+    width: 150px;
+    height: 42px;
+    border: none;
+    font-size: 14pt;
+    cursor: pointer;
+    margin-top: 24px;
+    margin-left: 48px;
+    color: var(--white);
+    border-radius: 20px;
+    text-transform: uppercase;
+    background-color: var(--blue);
+}
