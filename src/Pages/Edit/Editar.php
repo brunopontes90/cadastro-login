@@ -69,7 +69,7 @@
 
                 if($edit_user->execute()){
                     $_SESSION['msg'] = "<p style='color: #01DF01;'>Usuario editado com sucesso!</p>";
-                    header("Location: ../List/Listar.php");
+                    header("Location: ../List/Listar_tpl.php");
                 }else{
                     $_SESSION['msg'] = "<p style='color: #FF0000;'>Erro; Usuario não editado com sucesso!</p>";
                     
@@ -90,7 +90,7 @@
             <label class="label">Senha:</label>
             <input class="input" type="pass" name="senha" id="senha" value="<?=$row_user['senha'] ?>" placeholder="Digite sua senha" required/>
         </div>
-        <a href="../List/listar.php" class="btn-cancelar">Cancelar</a>
+        <a href="../List/Listar_tpl.php" class="btn-cancelar">Cancelar</a>
         <input class="btn-salvar" type="submit" value="Salvar" name="EditUser" />
     </form>
 </body>

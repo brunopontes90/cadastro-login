@@ -42,7 +42,7 @@
                     <td><?=$row['nome']?></td>
                     <td><?=$row['email']?></td>
                     <td>
-                        <a href="../Edit/Editar_tpl.php?id=<?=$row['id']?>" class="btn-edit fas fa-edit">Editar</a>
+                        <a href="../Edit/Editar.php?id=<?=$row['id']?>" class="btn-edit fas fa-edit">Editar</a>
                         <a href="../Delete/Deletar.php?id=<?=$row['id']?>" class="btn-delete fas fa-trash-alt">Excluir</a>
                     </td>
                 </tr>
