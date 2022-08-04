@@ -43,7 +43,7 @@
                 if($query_user->rowCount()){
                     unset($dados);
                     $_SESSION['msg'] = "<p style='color: green ;'>Usuario cadastrado com sucesso!</p>";
-                    header("Location: ../List/Listar.php");
+                    header("Location: ../List/Listar_tpl.php");
                 }else{
                     echo "<p style='color: red ;'>ERRO: tente novamente</p>";
                 }
@@ -65,7 +65,7 @@
         </div>
 
         <input class="btn-cadastrar" type="submit" value="Cadastrar" name="CadUser" />
-        <a href="../../../index.php">Voltar</a>
+        <a href="../../../index_tpl.php">Voltar</a>
     </form>
 </body>
 </html>

@@ -14,7 +14,7 @@
     <title>Listagem</title>
 </head>
 <body>
-    <a href="../../../index.php">Cadastrar</a>
+    <a href="../../../index_tpl.php">Sair</a>
     <h1 class="titulo-listagem">Lista de Usuarios</h1>
     <?php 
         if(isset($_SESSION['msg'])){
@@ -42,7 +42,7 @@
                     <td><?=$row['nome']?></td>
                     <td><?=$row['email']?></td>
                     <td>
-                        <a href="../Edit/Editar.php?id=<?=$row['id']?>" class="btn-edit fas fa-edit">Editar</a>
+                        <a href="../Edit/Editar_tpl.php?id=<?=$row['id']?>" class="btn-edit fas fa-edit">Editar</a>
                         <a href="../Delete/Deletar.php?id=<?=$row['id']?>" class="btn-delete fas fa-trash-alt">Excluir</a>
                     </td>
                 </tr>
