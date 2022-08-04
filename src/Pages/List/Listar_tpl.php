@@ -1,9 +1,9 @@
 <?php
     session_start();
     include_once '../../Conection/Conection.php';
-    $result = array();
-    $sql = "SELECT * FROM user";
-    $result = $conn->query($sql)->fetchAll();
+    $connect = new ConnectDatabase();
+    $connectDatabase = $connect->Connect();
+    $queySelect = $connect->SelectQuery();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,7 +36,7 @@
             <td>
                 <lable>Ação</lable>
             </td>
-            <?php foreach($result as $row) {?>
+            <?php foreach($queySelect as $row) {?>
                 <tr>
                     <td><?=$row['id']?></td>
                     <td><?=$row['nome']?></td>
