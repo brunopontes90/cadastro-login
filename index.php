@@ -2,6 +2,7 @@
     session_start();
     ob_start(); //LIMPAR O BUFFER DE SAIDA
     include_once './src/Conection/Conection.php';
+    header("Location: ./index_tpl.php");
     $connect = new ConnectDatabase();
     $connectDatabase = $connect->Connect();
 
